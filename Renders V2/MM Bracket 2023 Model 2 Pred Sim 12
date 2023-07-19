@@ -1,0 +1,515 @@
+// March Madness Bracket 2023 Simulation 12
+digraph "MM Bracket 2023 Simulation 12" {
+	graph [landscape=false]
+	edge [arrowhead=none penwidth=1]
+	label="March Madness Bracket 2023 Model 2 Pred Simulation 12"
+	nodesep=.2 rankdir=RL ranksep=.3 size="40,40" splines=line
+	node [fixedsize=false shape=plaintext style=filled width=1]
+	Purdue1 [label="Purdue 1" color=yellow group=W rank=1]
+	"F Dickinson1" [label="F Dickinson 16" color=yellow group=W rank=1]
+	Purdue2 [label="Purdue 1" color=yellow rank=2]
+	subgraph cluster_W {
+		label=W
+		Purdue1 -> Purdue2 [constraint=true samehead=true]
+		"F Dickinson1" -> Purdue2 [constraint=true samehead=true]
+	}
+	Memphis1 [label="Memphis 8" color=yellow group=W rank=1]
+	"FL Atlantic1" [label="FL Atlantic 9" color=yellow group=W rank=1]
+	Memphis2 [label="Memphis 8" color=yellow rank=2]
+	subgraph cluster_W {
+		label=W
+		Memphis1 -> Memphis2 [constraint=true samehead=true]
+		"FL Atlantic1" -> Memphis2 [constraint=true samehead=true]
+	}
+	Duke1 [label="Duke 5" color=yellow group=W rank=1]
+	"Oral Roberts1" [label="Oral Roberts 12" color=yellow group=W rank=1]
+	Duke2 [label="Duke 5" color=yellow rank=2]
+	subgraph cluster_W {
+		label=W
+		Duke1 -> Duke2 [constraint=true samehead=true]
+		"Oral Roberts1" -> Duke2 [constraint=true samehead=true]
+	}
+	Tennessee1 [label="Tennessee 4" color=yellow group=W rank=1]
+	Louisiana1 [label="Louisiana 13" color=yellow group=W rank=1]
+	Louisiana2 [label="Louisiana 13" color=yellow rank=2]
+	subgraph cluster_W {
+		label=W
+		Tennessee1 -> Louisiana2 [constraint=true samehead=true]
+		Louisiana1 -> Louisiana2 [constraint=true samehead=true]
+	}
+	Kentucky1 [label="Kentucky 6" color=yellow group=W rank=1]
+	Providence1 [label="Providence 11" color=yellow group=W rank=1]
+	Providence2 [label="Providence 11" color=yellow rank=2]
+	subgraph cluster_W {
+		label=W
+		Kentucky1 -> Providence2 [constraint=true samehead=true]
+		Providence1 -> Providence2 [constraint=true samehead=true]
+	}
+	"Kansas St1" [label="Kansas St 3" color=yellow group=W rank=1]
+	"Montana St1" [label="Montana St 14" color=yellow group=W rank=1]
+	"Montana St2" [label="Montana St 14" color=yellow rank=2]
+	subgraph cluster_W {
+		label=W
+		"Kansas St1" -> "Montana St2" [constraint=true samehead=true]
+		"Montana St1" -> "Montana St2" [constraint=true samehead=true]
+	}
+	"Michigan St1" [label="Michigan St 7" color=yellow group=W rank=1]
+	USC1 [label="USC 10" color=yellow group=W rank=1]
+	USC2 [label="USC 10" color=yellow rank=2]
+	subgraph cluster_W {
+		label=W
+		"Michigan St1" -> USC2 [constraint=true samehead=true]
+		USC1 -> USC2 [constraint=true samehead=true]
+	}
+	Marquette1 [label="Marquette 2" color=yellow group=W rank=1]
+	Vermont1 [label="Vermont 15" color=yellow group=W rank=1]
+	Marquette2 [label="Marquette 2" color=yellow rank=2]
+	subgraph cluster_W {
+		label=W
+		Marquette1 -> Marquette2 [constraint=true samehead=true]
+		Vermont1 -> Marquette2 [constraint=true samehead=true]
+	}
+	Alabama1 [label="Alabama 1" color=purple group=X rank=1]
+	"SE Missouri St1" [label="SE Missouri St 16" color=purple group=X rank=1]
+	Alabama2 [label="Alabama 1" color=purple rank=2]
+	subgraph cluster_X {
+		label=X
+		Alabama1 -> Alabama2 [constraint=true samehead=true]
+		"SE Missouri St1" -> Alabama2 [constraint=true samehead=true]
+	}
+	Maryland1 [label="Maryland 8" color=purple group=X rank=1]
+	"West Virginia1" [label="West Virginia 9" color=purple group=X rank=1]
+	"West Virginia2" [label="West Virginia 9" color=purple rank=2]
+	subgraph cluster_X {
+		label=X
+		Maryland1 -> "West Virginia2" [constraint=true samehead=true]
+		"West Virginia1" -> "West Virginia2" [constraint=true samehead=true]
+	}
+	"San Diego St1" [label="San Diego St 5" color=purple group=X rank=1]
+	"Col Charleston1" [label="Col Charleston 12" color=purple group=X rank=1]
+	"San Diego St2" [label="San Diego St 5" color=purple rank=2]
+	subgraph cluster_X {
+		label=X
+		"San Diego St1" -> "San Diego St2" [constraint=true samehead=true]
+		"Col Charleston1" -> "San Diego St2" [constraint=true samehead=true]
+	}
+	Virginia1 [label="Virginia 4" color=purple group=X rank=1]
+	Furman1 [label="Furman 13" color=purple group=X rank=1]
+	Virginia2 [label="Virginia 4" color=purple rank=2]
+	subgraph cluster_X {
+		label=X
+		Virginia1 -> Virginia2 [constraint=true samehead=true]
+		Furman1 -> Virginia2 [constraint=true samehead=true]
+	}
+	Creighton1 [label="Creighton 6" color=purple group=X rank=1]
+	"NC State1" [label="NC State 11" color=purple group=X rank=1]
+	"NC State2" [label="NC State 11" color=purple rank=2]
+	subgraph cluster_X {
+		label=X
+		Creighton1 -> "NC State2" [constraint=true samehead=true]
+		"NC State1" -> "NC State2" [constraint=true samehead=true]
+	}
+	Baylor1 [label="Baylor 3" color=purple group=X rank=1]
+	"UC Santa Barbara1" [label="UC Santa Barbara 14" color=purple group=X rank=1]
+	"UC Santa Barbara2" [label="UC Santa Barbara 14" color=purple rank=2]
+	subgraph cluster_X {
+		label=X
+		Baylor1 -> "UC Santa Barbara2" [constraint=true samehead=true]
+		"UC Santa Barbara1" -> "UC Santa Barbara2" [constraint=true samehead=true]
+	}
+	Missouri1 [label="Missouri 7" color=purple group=X rank=1]
+	"Utah St1" [label="Utah St 10" color=purple group=X rank=1]
+	Missouri2 [label="Missouri 7" color=purple rank=2]
+	subgraph cluster_X {
+		label=X
+		Missouri1 -> Missouri2 [constraint=true samehead=true]
+		"Utah St1" -> Missouri2 [constraint=true samehead=true]
+	}
+	Arizona1 [label="Arizona 2" color=purple group=X rank=1]
+	Princeton1 [label="Princeton 15" color=purple group=X rank=1]
+	Arizona2 [label="Arizona 2" color=purple rank=2]
+	subgraph cluster_X {
+		label=X
+		Arizona1 -> Arizona2 [constraint=true samehead=true]
+		Princeton1 -> Arizona2 [constraint=true samehead=true]
+	}
+	Houston1 [label="Houston 1" color=orange group=Y rank=1]
+	"N Kentucky1" [label="N Kentucky 16" color=orange group=Y rank=1]
+	"N Kentucky2" [label="N Kentucky 16" color=orange rank=2]
+	subgraph cluster_Y {
+		label=Y
+		"N Kentucky2" -> Houston1 [constraint=true samehead=true]
+		"N Kentucky2" -> "N Kentucky1" [constraint=true samehead=true]
+	}
+	Iowa1 [label="Iowa 8" color=orange group=Y rank=1]
+	Auburn1 [label="Auburn 9" color=orange group=Y rank=1]
+	Auburn2 [label="Auburn 9" color=orange rank=2]
+	subgraph cluster_Y {
+		label=Y
+		Auburn2 -> Iowa1 [constraint=true samehead=true]
+		Auburn2 -> Auburn1 [constraint=true samehead=true]
+	}
+	"Miami FL1" [label="Miami FL 5" color=orange group=Y rank=1]
+	Drake1 [label="Drake 12" color=orange group=Y rank=1]
+	"Miami FL2" [label="Miami FL 5" color=orange rank=2]
+	subgraph cluster_Y {
+		label=Y
+		"Miami FL2" -> "Miami FL1" [constraint=true samehead=true]
+		"Miami FL2" -> Drake1 [constraint=true samehead=true]
+	}
+	Indiana1 [label="Indiana 4" color=orange group=Y rank=1]
+	Kent1 [label="Kent 13" color=orange group=Y rank=1]
+	Kent2 [label="Kent 13" color=orange rank=2]
+	subgraph cluster_Y {
+		label=Y
+		Kent2 -> Indiana1 [constraint=true samehead=true]
+		Kent2 -> Kent1 [constraint=true samehead=true]
+	}
+	"Iowa St1" [label="Iowa St 6" color=orange group=Y rank=1]
+	Pittsburgh1 [label="Pittsburgh 11" color=orange group=Y rank=1]
+	Pittsburgh2 [label="Pittsburgh 11" color=orange rank=2]
+	subgraph cluster_Y {
+		label=Y
+		Pittsburgh2 -> "Iowa St1" [constraint=true samehead=true]
+		Pittsburgh2 -> Pittsburgh1 [constraint=true samehead=true]
+	}
+	Xavier1 [label="Xavier 3" color=orange group=Y rank=1]
+	Kennesaw1 [label="Kennesaw 14" color=orange group=Y rank=1]
+	Kennesaw2 [label="Kennesaw 14" color=orange rank=2]
+	subgraph cluster_Y {
+		label=Y
+		Kennesaw2 -> Xavier1 [constraint=true samehead=true]
+		Kennesaw2 -> Kennesaw1 [constraint=true samehead=true]
+	}
+	"Texas A&M1" [label="Texas A&M 7" color=orange group=Y rank=1]
+	"Penn St1" [label="Penn St 10" color=orange group=Y rank=1]
+	"Penn St2" [label="Penn St 10" color=orange rank=2]
+	subgraph cluster_Y {
+		label=Y
+		"Penn St2" -> "Texas A&M1" [constraint=true samehead=true]
+		"Penn St2" -> "Penn St1" [constraint=true samehead=true]
+	}
+	Texas1 [label="Texas 2" color=orange group=Y rank=1]
+	Colgate1 [label="Colgate 15" color=orange group=Y rank=1]
+	Texas2 [label="Texas 2" color=orange rank=2]
+	subgraph cluster_Y {
+		label=Y
+		Texas2 -> Texas1 [constraint=true samehead=true]
+		Texas2 -> Colgate1 [constraint=true samehead=true]
+	}
+	Kansas1 [label="Kansas 1" color=red group=Z rank=1]
+	Howard1 [label="Howard 16" color=red group=Z rank=1]
+	Kansas2 [label="Kansas 1" color=red rank=2]
+	subgraph cluster_Z {
+		label=Z
+		Kansas2 -> Kansas1 [constraint=true samehead=true]
+		Kansas2 -> Howard1 [constraint=true samehead=true]
+	}
+	Arkansas1 [label="Arkansas 8" color=red group=Z rank=1]
+	Illinois1 [label="Illinois 9" color=red group=Z rank=1]
+	Illinois2 [label="Illinois 9" color=red rank=2]
+	subgraph cluster_Z {
+		label=Z
+		Illinois2 -> Arkansas1 [constraint=true samehead=true]
+		Illinois2 -> Illinois1 [constraint=true samehead=true]
+	}
+	"St Mary's CA1" [label="St Mary's CA 5" color=red group=Z rank=1]
+	VCU1 [label="VCU 12" color=red group=Z rank=1]
+	VCU2 [label="VCU 12" color=red rank=2]
+	subgraph cluster_Z {
+		label=Z
+		VCU2 -> "St Mary's CA1" [constraint=true samehead=true]
+		VCU2 -> VCU1 [constraint=true samehead=true]
+	}
+	Connecticut1 [label="Connecticut 4" color=red group=Z rank=1]
+	Iona1 [label="Iona 13" color=red group=Z rank=1]
+	Connecticut2 [label="Connecticut 4" color=red rank=2]
+	subgraph cluster_Z {
+		label=Z
+		Connecticut2 -> Connecticut1 [constraint=true samehead=true]
+		Connecticut2 -> Iona1 [constraint=true samehead=true]
+	}
+	TCU1 [label="TCU 6" color=red group=Z rank=1]
+	Nevada1 [label="Nevada 11" color=red group=Z rank=1]
+	Nevada2 [label="Nevada 11" color=red rank=2]
+	subgraph cluster_Z {
+		label=Z
+		Nevada2 -> TCU1 [constraint=true samehead=true]
+		Nevada2 -> Nevada1 [constraint=true samehead=true]
+	}
+	Gonzaga1 [label="Gonzaga 3" color=red group=Z rank=1]
+	"Grand Canyon1" [label="Grand Canyon 14" color=red group=Z rank=1]
+	Gonzaga2 [label="Gonzaga 3" color=red rank=2]
+	subgraph cluster_Z {
+		label=Z
+		Gonzaga2 -> Gonzaga1 [constraint=true samehead=true]
+		Gonzaga2 -> "Grand Canyon1" [constraint=true samehead=true]
+	}
+	Northwestern1 [label="Northwestern 7" color=red group=Z rank=1]
+	"Boise St1" [label="Boise St 10" color=red group=Z rank=1]
+	"Boise St2" [label="Boise St 10" color=red rank=2]
+	subgraph cluster_Z {
+		label=Z
+		"Boise St2" -> Northwestern1 [constraint=true samehead=true]
+		"Boise St2" -> "Boise St1" [constraint=true samehead=true]
+	}
+	UCLA1 [label="UCLA 2" color=red group=Z rank=1]
+	"UNC Asheville1" [label="UNC Asheville 15" color=red group=Z rank=1]
+	UCLA2 [label="UCLA 2" color=red rank=2]
+	subgraph cluster_Z {
+		label=Z
+		UCLA2 -> UCLA1 [constraint=true samehead=true]
+		UCLA2 -> "UNC Asheville1" [constraint=true samehead=true]
+	}
+	Purdue2 [label="Purdue 1" color=yellow group=W rank=2]
+	Memphis2 [label="Memphis 8" color=yellow group=W rank=2]
+	Memphis3 [label="Memphis 8" color=yellow rank=3]
+	subgraph cluster_W {
+		label=W
+		Purdue2 -> Memphis3 [constraint=true samehead=true]
+		Memphis2 -> Memphis3 [constraint=true samehead=true]
+	}
+	Duke2 [label="Duke 5" color=yellow group=W rank=2]
+	Louisiana2 [label="Louisiana 13" color=yellow group=W rank=2]
+	Louisiana3 [label="Louisiana 13" color=yellow rank=3]
+	subgraph cluster_W {
+		label=W
+		Duke2 -> Louisiana3 [constraint=true samehead=true]
+		Louisiana2 -> Louisiana3 [constraint=true samehead=true]
+	}
+	Providence2 [label="Providence 11" color=yellow group=W rank=2]
+	"Montana St2" [label="Montana St 14" color=yellow group=W rank=2]
+	"Montana St3" [label="Montana St 14" color=yellow rank=3]
+	subgraph cluster_W {
+		label=W
+		Providence2 -> "Montana St3" [constraint=true samehead=true]
+		"Montana St2" -> "Montana St3" [constraint=true samehead=true]
+	}
+	USC2 [label="USC 10" color=yellow group=W rank=2]
+	Marquette2 [label="Marquette 2" color=yellow group=W rank=2]
+	Marquette3 [label="Marquette 2" color=yellow rank=3]
+	subgraph cluster_W {
+		label=W
+		USC2 -> Marquette3 [constraint=true samehead=true]
+		Marquette2 -> Marquette3 [constraint=true samehead=true]
+	}
+	Alabama2 [label="Alabama 1" color=purple group=X rank=2]
+	"West Virginia2" [label="West Virginia 9" color=purple group=X rank=2]
+	Alabama3 [label="Alabama 1" color=purple rank=3]
+	subgraph cluster_X {
+		label=X
+		Alabama2 -> Alabama3 [constraint=true samehead=true]
+		"West Virginia2" -> Alabama3 [constraint=true samehead=true]
+	}
+	"San Diego St2" [label="San Diego St 5" color=purple group=X rank=2]
+	Virginia2 [label="Virginia 4" color=purple group=X rank=2]
+	Virginia3 [label="Virginia 4" color=purple rank=3]
+	subgraph cluster_X {
+		label=X
+		"San Diego St2" -> Virginia3 [constraint=true samehead=true]
+		Virginia2 -> Virginia3 [constraint=true samehead=true]
+	}
+	"NC State2" [label="NC State 11" color=purple group=X rank=2]
+	"UC Santa Barbara2" [label="UC Santa Barbara 14" color=purple group=X rank=2]
+	"UC Santa Barbara3" [label="UC Santa Barbara 14" color=purple rank=3]
+	subgraph cluster_X {
+		label=X
+		"NC State2" -> "UC Santa Barbara3" [constraint=true samehead=true]
+		"UC Santa Barbara2" -> "UC Santa Barbara3" [constraint=true samehead=true]
+	}
+	Missouri2 [label="Missouri 7" color=purple group=X rank=2]
+	Arizona2 [label="Arizona 2" color=purple group=X rank=2]
+	Missouri3 [label="Missouri 7" color=purple rank=3]
+	subgraph cluster_X {
+		label=X
+		Missouri2 -> Missouri3 [constraint=true samehead=true]
+		Arizona2 -> Missouri3 [constraint=true samehead=true]
+	}
+	"N Kentucky2" [label="N Kentucky 16" color=orange group=Y rank=2]
+	Auburn2 [label="Auburn 9" color=orange group=Y rank=2]
+	Auburn3 [label="Auburn 9" color=orange rank=3]
+	subgraph cluster_Y {
+		label=Y
+		Auburn3 -> "N Kentucky2" [constraint=true samehead=true]
+		Auburn3 -> Auburn2 [constraint=true samehead=true]
+	}
+	"Miami FL2" [label="Miami FL 5" color=orange group=Y rank=2]
+	Kent2 [label="Kent 13" color=orange group=Y rank=2]
+	Kent3 [label="Kent 13" color=orange rank=3]
+	subgraph cluster_Y {
+		label=Y
+		Kent3 -> "Miami FL2" [constraint=true samehead=true]
+		Kent3 -> Kent2 [constraint=true samehead=true]
+	}
+	Pittsburgh2 [label="Pittsburgh 11" color=orange group=Y rank=2]
+	Kennesaw2 [label="Kennesaw 14" color=orange group=Y rank=2]
+	Kennesaw3 [label="Kennesaw 14" color=orange rank=3]
+	subgraph cluster_Y {
+		label=Y
+		Kennesaw3 -> Pittsburgh2 [constraint=true samehead=true]
+		Kennesaw3 -> Kennesaw2 [constraint=true samehead=true]
+	}
+	"Penn St2" [label="Penn St 10" color=orange group=Y rank=2]
+	Texas2 [label="Texas 2" color=orange group=Y rank=2]
+	Texas3 [label="Texas 2" color=orange rank=3]
+	subgraph cluster_Y {
+		label=Y
+		Texas3 -> "Penn St2" [constraint=true samehead=true]
+		Texas3 -> Texas2 [constraint=true samehead=true]
+	}
+	Kansas2 [label="Kansas 1" color=red group=Z rank=2]
+	Illinois2 [label="Illinois 9" color=red group=Z rank=2]
+	Illinois3 [label="Illinois 9" color=red rank=3]
+	subgraph cluster_Z {
+		label=Z
+		Illinois3 -> Kansas2 [constraint=true samehead=true]
+		Illinois3 -> Illinois2 [constraint=true samehead=true]
+	}
+	VCU2 [label="VCU 12" color=red group=Z rank=2]
+	Connecticut2 [label="Connecticut 4" color=red group=Z rank=2]
+	Connecticut3 [label="Connecticut 4" color=red rank=3]
+	subgraph cluster_Z {
+		label=Z
+		Connecticut3 -> VCU2 [constraint=true samehead=true]
+		Connecticut3 -> Connecticut2 [constraint=true samehead=true]
+	}
+	Nevada2 [label="Nevada 11" color=red group=Z rank=2]
+	Gonzaga2 [label="Gonzaga 3" color=red group=Z rank=2]
+	Gonzaga3 [label="Gonzaga 3" color=red rank=3]
+	subgraph cluster_Z {
+		label=Z
+		Gonzaga3 -> Nevada2 [constraint=true samehead=true]
+		Gonzaga3 -> Gonzaga2 [constraint=true samehead=true]
+	}
+	"Boise St2" [label="Boise St 10" color=red group=Z rank=2]
+	UCLA2 [label="UCLA 2" color=red group=Z rank=2]
+	UCLA3 [label="UCLA 2" color=red rank=3]
+	subgraph cluster_Z {
+		label=Z
+		UCLA3 -> "Boise St2" [constraint=true samehead=true]
+		UCLA3 -> UCLA2 [constraint=true samehead=true]
+	}
+	Memphis3 [label="Memphis 8" color=yellow group=W rank=3]
+	Louisiana3 [label="Louisiana 13" color=yellow group=W rank=3]
+	Louisiana4 [label="Louisiana 13" color=yellow rank=4]
+	subgraph cluster_W {
+		label=W
+		Memphis3 -> Louisiana4 [constraint=true samehead=true]
+		Louisiana3 -> Louisiana4 [constraint=true samehead=true]
+	}
+	"Montana St3" [label="Montana St 14" color=yellow group=W rank=3]
+	Marquette3 [label="Marquette 2" color=yellow group=W rank=3]
+	Marquette4 [label="Marquette 2" color=yellow rank=4]
+	subgraph cluster_W {
+		label=W
+		"Montana St3" -> Marquette4 [constraint=true samehead=true]
+		Marquette3 -> Marquette4 [constraint=true samehead=true]
+	}
+	Alabama3 [label="Alabama 1" color=purple group=X rank=3]
+	Virginia3 [label="Virginia 4" color=purple group=X rank=3]
+	Alabama4 [label="Alabama 1" color=purple rank=4]
+	subgraph cluster_X {
+		label=X
+		Alabama3 -> Alabama4 [constraint=true samehead=true]
+		Virginia3 -> Alabama4 [constraint=true samehead=true]
+	}
+	"UC Santa Barbara3" [label="UC Santa Barbara 14" color=purple group=X rank=3]
+	Missouri3 [label="Missouri 7" color=purple group=X rank=3]
+	Missouri4 [label="Missouri 7" color=purple rank=4]
+	subgraph cluster_X {
+		label=X
+		"UC Santa Barbara3" -> Missouri4 [constraint=true samehead=true]
+		Missouri3 -> Missouri4 [constraint=true samehead=true]
+	}
+	Auburn3 [label="Auburn 9" color=orange group=Y rank=3]
+	Kent3 [label="Kent 13" color=orange group=Y rank=3]
+	Kent4 [label="Kent 13" color=orange rank=4]
+	subgraph cluster_Y {
+		label=Y
+		Kent4 -> Auburn3 [constraint=true samehead=true]
+		Kent4 -> Kent3 [constraint=true samehead=true]
+	}
+	Kennesaw3 [label="Kennesaw 14" color=orange group=Y rank=3]
+	Texas3 [label="Texas 2" color=orange group=Y rank=3]
+	Texas4 [label="Texas 2" color=orange rank=4]
+	subgraph cluster_Y {
+		label=Y
+		Texas4 -> Kennesaw3 [constraint=true samehead=true]
+		Texas4 -> Texas3 [constraint=true samehead=true]
+	}
+	Illinois3 [label="Illinois 9" color=red group=Z rank=3]
+	Connecticut3 [label="Connecticut 4" color=red group=Z rank=3]
+	Connecticut4 [label="Connecticut 4" color=red rank=4]
+	subgraph cluster_Z {
+		label=Z
+		Connecticut4 -> Illinois3 [constraint=true samehead=true]
+		Connecticut4 -> Connecticut3 [constraint=true samehead=true]
+	}
+	Gonzaga3 [label="Gonzaga 3" color=red group=Z rank=3]
+	UCLA3 [label="UCLA 2" color=red group=Z rank=3]
+	UCLA4 [label="UCLA 2" color=red rank=4]
+	subgraph cluster_Z {
+		label=Z
+		UCLA4 -> Gonzaga3 [constraint=true samehead=true]
+		UCLA4 -> UCLA3 [constraint=true samehead=true]
+	}
+	Louisiana4 [label="Louisiana 13" color=yellow group=W rank=4]
+	Marquette4 [label="Marquette 2" color=yellow group=W rank=4]
+	Marquette5 [label="Marquette 2" color=yellow rank=5]
+	subgraph cluster_W {
+		label=W
+		Louisiana4 -> Marquette5 [constraint=true samehead=true]
+		Marquette4 -> Marquette5 [constraint=true samehead=true]
+	}
+	Alabama4 [label="Alabama 1" color=purple group=X rank=4]
+	Missouri4 [label="Missouri 7" color=purple group=X rank=4]
+	Alabama5 [label="Alabama 1" color=purple rank=5]
+	subgraph cluster_X {
+		label=X
+		Alabama4 -> Alabama5 [constraint=true samehead=true]
+		Missouri4 -> Alabama5 [constraint=true samehead=true]
+	}
+	Kent4 [label="Kent 13" color=orange group=Y rank=4]
+	Texas4 [label="Texas 2" color=orange group=Y rank=4]
+	Texas5 [label="Texas 2" color=orange rank=5]
+	subgraph cluster_Y {
+		label=Y
+		Texas5 -> Kent4 [constraint=true samehead=true]
+		Texas5 -> Texas4 [constraint=true samehead=true]
+	}
+	Connecticut4 [label="Connecticut 4" color=red group=Z rank=4]
+	UCLA4 [label="UCLA 2" color=red group=Z rank=4]
+	UCLA5 [label="UCLA 2" color=red rank=5]
+	subgraph cluster_Z {
+		label=Z
+		UCLA5 -> Connecticut4 [constraint=true samehead=true]
+		UCLA5 -> UCLA4 [constraint=true samehead=true]
+	}
+	Texas5 [label="Texas 2" color=blue group=round5 rank=5]
+	UCLA5 [label="UCLA 2" color=blue group=round5 rank=5]
+	UCLA6 [label="UCLA 2" color=blue rank=6]
+	subgraph round5 {
+		label=round5
+		nodesep=.5 rankdir=LR ranksep=.5
+		UCLA5 -> UCLA6 [constraint=true]
+		UCLA6 -> Texas5 [constraint=true]
+	}
+	Alabama5 [label="Alabama 1" color=blue group=round5 rank=5]
+	Alabama5 [label="Alabama 1" color=blue group=round5 rank=5]
+	Alabama6 [label="Alabama 1" color=blue rank=6]
+	subgraph round5 {
+		label=round5
+		nodesep=.5 rankdir=LR ranksep=.5
+		Alabama5 -> Alabama6 [constraint=true]
+		Alabama6 -> Alabama5 [constraint=true]
+	}
+	UCLA6 [label="UCLA 2" color=green group=round6 rank=6]
+	Alabama6 [label="Alabama 1" color=green group=round6 rank=6]
+	UCLA7 [label="UCLA 2" color=green rank=7]
+	subgraph round6 {
+		label=round6
+		nodesep=.5 rankdir=LR ranksep=.5
+		Alabama6 -> UCLA7 [constraint=true]
+		UCLA7 -> UCLA6 [constraint=true]
+	}
+}

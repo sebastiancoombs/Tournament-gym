@@ -1,0 +1,18 @@
+['UCF':'Central Florida',
+ 'ETSU':'East Tennessee State',
+ 'George Mason':'George Mason',
+ 'LIU Brooklyn':'Long Island',
+ 'Lafayette':'Louisiana-Lafayette',
+ 'ULM':'Louisiana-Monroe',
+ 'Loyola-Chicago':'Loyola (Ill.)',
+ 
+ 'UMBC':'Maryland-Baltimore County',
+ 'MTSU':'Middle Tennessee State',
+ 'NC A&T':'North Carolina A&T',
+ 'NC State':'North Carolina State',
+ 'Northwestern LA':'Northwestern State',
+ 'USC':'Southern California',
+ 'SMU':'Southern Methodist',
+ 'California':'UC Berkeley',
+ 'VCU':'Virginia Commonwealth',
+ 'WKU':'Western Kentucky']

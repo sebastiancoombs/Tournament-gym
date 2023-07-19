@@ -1,0 +1,327 @@
+// March Madness Bracket
+digraph wide {
+	node [fontsize=10 shape=circle style=filled]
+	edge [arrowhead=none penwidth=1]
+	nodesep=0.05 rankdir=RL ranksep=.1 size="100,100" splines=line
+	Kansas6 [label="Kansas 1" color=green rank=6]
+	"Murray St6" [label="Murray St 7" color=green rank=6]
+	Kansas7 [label="Kansas 1" color=green rank=7]
+	"Murray St6" -> Kansas7 [nodesep=10 rankdir=TB ranksep=10]
+	Kansas7 -> Kansas6 [nodesep=10 rankdir=TB ranksep=10]
+	"Texas Tech5" [label="Texas Tech 3" color=blue rank=5]
+	"Murray St5" [label="Murray St 7" color=blue rank=5]
+	"Murray St6" [label="Murray St 7" color=blue rank=6]
+	"Murray St5" -> "Murray St6" [nodesep=10 rankdir=TB ranksep=10]
+	"Murray St6" -> "Texas Tech5" [nodesep=10 rankdir=TB ranksep=10]
+	"Ohio St5" [label="Ohio St 7" color=blue rank=5]
+	Kansas5 [label="Kansas 1" color=blue rank=5]
+	Kansas6 [label="Kansas 1" color=blue rank=6]
+	Kansas5 -> Kansas6 [nodesep=10 rankdir=TB ranksep=10]
+	Kansas6 -> "Ohio St5" [nodesep=10 rankdir=TB ranksep=10]
+	Arizona4 [label="Arizona 1" color=yellow rank=4]
+	"Ohio St4" [label="Ohio St 7" color=yellow rank=4]
+	"Ohio St5" [label="Ohio St 7" color=yellow rank=5]
+	"Ohio St5" -> Arizona4
+	"Ohio St5" -> "Ohio St4"
+	Kansas4 [label="Kansas 1" color=purple rank=4]
+	Auburn4 [label="Auburn 2" color=purple rank=4]
+	Kansas5 [label="Kansas 1" color=purple rank=5]
+	Kansas5 -> Kansas4
+	Kansas5 -> Auburn4
+	Gonzaga4 [label="Gonzaga 1" color=orange rank=4]
+	"Texas Tech4" [label="Texas Tech 3" color=orange rank=4]
+	"Texas Tech5" [label="Texas Tech 3" color=orange rank=5]
+	Gonzaga4 -> "Texas Tech5"
+	"Texas Tech4" -> "Texas Tech5"
+	"St Mary's CA4" [label="St Mary's CA 5" color=red rank=4]
+	"Murray St4" [label="Murray St 7" color=red rank=4]
+	"Murray St5" [label="Murray St 7" color=red rank=5]
+	"St Mary's CA4" -> "Murray St5"
+	"Murray St4" -> "Murray St5"
+	Kansas3 [label="Kansas 1" color=purple rank=3]
+	Providence3 [label="Providence 4" color=purple rank=3]
+	Kansas4 [label="Kansas 1" color=purple rank=4]
+	Kansas4 -> Kansas3
+	Kansas4 -> Providence3
+	Texas3 [label="Texas 6" color=red rank=3]
+	"Murray St3" [label="Murray St 7" color=red rank=3]
+	"Murray St4" [label="Murray St 7" color=red rank=4]
+	Texas3 -> "Murray St4"
+	"Murray St3" -> "Murray St4"
+	Gonzaga3 [label="Gonzaga 1" color=orange rank=3]
+	Arkansas3 [label="Arkansas 4" color=orange rank=3]
+	Gonzaga4 [label="Gonzaga 1" color=orange rank=4]
+	Gonzaga3 -> Gonzaga4
+	Arkansas3 -> Gonzaga4
+	"Texas Tech3" [label="Texas Tech 3" color=orange rank=3]
+	"Michigan St3" [label="Michigan St 7" color=orange rank=3]
+	"Texas Tech4" [label="Texas Tech 3" color=orange rank=4]
+	"Texas Tech3" -> "Texas Tech4"
+	"Michigan St3" -> "Texas Tech4"
+	Baylor3 [label="Baylor 1" color=red rank=3]
+	"St Mary's CA3" [label="St Mary's CA 5" color=red rank=3]
+	"St Mary's CA4" [label="St Mary's CA 5" color=red rank=4]
+	Baylor3 -> "St Mary's CA4"
+	"St Mary's CA3" -> "St Mary's CA4"
+	Wisconsin3 [label="Wisconsin 3" color=purple rank=3]
+	Auburn3 [label="Auburn 2" color=purple rank=3]
+	Auburn4 [label="Auburn 2" color=purple rank=4]
+	Auburn4 -> Wisconsin3
+	Auburn4 -> Auburn3
+	Tennessee3 [label="Tennessee 3" color=yellow rank=3]
+	"Ohio St3" [label="Ohio St 7" color=yellow rank=3]
+	"Ohio St4" [label="Ohio St 7" color=yellow rank=4]
+	"Ohio St4" -> Tennessee3
+	"Ohio St4" -> "Ohio St3"
+	Arizona3 [label="Arizona 1" color=yellow rank=3]
+	Houston3 [label="Houston 5" color=yellow rank=3]
+	Arizona4 [label="Arizona 1" color=yellow rank=4]
+	Arizona4 -> Arizona3
+	Arizona4 -> Houston3
+	Kansas2 [label="Kansas 1" color=purple rank=2]
+	"San Diego St2" [label="San Diego St 8" color=purple rank=2]
+	Kansas3 [label="Kansas 1" color=purple rank=3]
+	Kansas3 -> Kansas2
+	Kansas3 -> "San Diego St2"
+	Texas2 [label="Texas 6" color=red rank=2]
+	Purdue2 [label="Purdue 3" color=red rank=2]
+	Texas3 [label="Texas 6" color=red rank=3]
+	Texas2 -> Texas3
+	Purdue2 -> Texas3
+	"Murray St2" [label="Murray St 7" color=red rank=2]
+	Kentucky2 [label="Kentucky 2" color=red rank=2]
+	"Murray St3" [label="Murray St 7" color=red rank=3]
+	"Murray St2" -> "Murray St3"
+	Kentucky2 -> "Murray St3"
+	Gonzaga2 [label="Gonzaga 1" color=orange rank=2]
+	"Boise St2" [label="Boise St 8" color=orange rank=2]
+	Gonzaga3 [label="Gonzaga 1" color=orange rank=3]
+	Gonzaga2 -> Gonzaga3
+	"Boise St2" -> Gonzaga3
+	Connecticut2 [label="Connecticut 5" color=orange rank=2]
+	Arkansas2 [label="Arkansas 4" color=orange rank=2]
+	Arkansas3 [label="Arkansas 4" color=orange rank=3]
+	Connecticut2 -> Arkansas3
+	Arkansas2 -> Arkansas3
+	Alabama2 [label="Alabama 6" color=orange rank=2]
+	"Texas Tech2" [label="Texas Tech 3" color=orange rank=2]
+	"Texas Tech3" [label="Texas Tech 3" color=orange rank=3]
+	Alabama2 -> "Texas Tech3"
+	"Texas Tech2" -> "Texas Tech3"
+	"Michigan St2" [label="Michigan St 7" color=orange rank=2]
+	Duke2 [label="Duke 2" color=orange rank=2]
+	"Michigan St3" [label="Michigan St 7" color=orange rank=3]
+	"Michigan St2" -> "Michigan St3"
+	Duke2 -> "Michigan St3"
+	LSU2 [label="LSU 6" color=purple rank=2]
+	Wisconsin2 [label="Wisconsin 3" color=purple rank=2]
+	Wisconsin3 [label="Wisconsin 3" color=purple rank=3]
+	Wisconsin3 -> LSU2
+	Wisconsin3 -> Wisconsin2
+	Iowa2 [label="Iowa 5" color=purple rank=2]
+	Providence2 [label="Providence 4" color=purple rank=2]
+	Providence3 [label="Providence 4" color=purple rank=3]
+	Providence3 -> Iowa2
+	Providence3 -> Providence2
+	USC2 [label="USC 7" color=purple rank=2]
+	Auburn2 [label="Auburn 2" color=purple rank=2]
+	Auburn3 [label="Auburn 2" color=purple rank=3]
+	Auburn3 -> USC2
+	Auburn3 -> Auburn2
+	Arizona2 [label="Arizona 1" color=yellow rank=2]
+	"Seton Hall2" [label="Seton Hall 8" color=yellow rank=2]
+	Arizona3 [label="Arizona 1" color=yellow rank=3]
+	Arizona3 -> Arizona2
+	Arizona3 -> "Seton Hall2"
+	Houston2 [label="Houston 5" color=yellow rank=2]
+	Illinois2 [label="Illinois 4" color=yellow rank=2]
+	Houston3 [label="Houston 5" color=yellow rank=3]
+	Houston3 -> Houston2
+	Houston3 -> Illinois2
+	"Colorado St2" [label="Colorado St 6" color=yellow rank=2]
+	Tennessee2 [label="Tennessee 3" color=yellow rank=2]
+	Tennessee3 [label="Tennessee 3" color=yellow rank=3]
+	Tennessee3 -> "Colorado St2"
+	Tennessee3 -> Tennessee2
+	"Ohio St2" [label="Ohio St 7" color=yellow rank=2]
+	Villanova2 [label="Villanova 2" color=yellow rank=2]
+	"Ohio St3" [label="Ohio St 7" color=yellow rank=3]
+	"Ohio St3" -> "Ohio St2"
+	"Ohio St3" -> Villanova2
+	Baylor2 [label="Baylor 1" color=red rank=2]
+	"North Carolina2" [label="North Carolina 8" color=red rank=2]
+	Baylor3 [label="Baylor 1" color=red rank=3]
+	Baylor2 -> Baylor3
+	"North Carolina2" -> Baylor3
+	"St Mary's CA2" [label="St Mary's CA 5" color=red rank=2]
+	UCLA2 [label="UCLA 4" color=red rank=2]
+	"St Mary's CA3" [label="St Mary's CA 5" color=red rank=3]
+	"St Mary's CA2" -> "St Mary's CA3"
+	UCLA2 -> "St Mary's CA3"
+	Baylor1 [label="Baylor 1" color=red rank=1]
+	"Norfolk St1" [label="Norfolk St 16" color=red rank=1]
+	Baylor2 [label="Baylor 1" color=red rank=2]
+	Baylor1 -> Baylor2
+	"Norfolk St1" -> Baylor2
+	"North Carolina1" [label="North Carolina 8" color=red rank=1]
+	Marquette1 [label="Marquette 9" color=red rank=1]
+	"North Carolina2" [label="North Carolina 8" color=red rank=2]
+	"North Carolina1" -> "North Carolina2"
+	Marquette1 -> "North Carolina2"
+	Duke1 [label="Duke 2" color=orange rank=1]
+	"CS Fullerton1" [label="CS Fullerton 15" color=orange rank=1]
+	Duke2 [label="Duke 2" color=orange rank=2]
+	Duke1 -> Duke2
+	"CS Fullerton1" -> Duke2
+	"St Mary's CA1" [label="St Mary's CA 5" color=red rank=1]
+	Indiana1 [label="Indiana 12" color=red rank=1]
+	"St Mary's CA2" [label="St Mary's CA 5" color=red rank=2]
+	"St Mary's CA1" -> "St Mary's CA2"
+	Indiana1 -> "St Mary's CA2"
+	UCLA1 [label="UCLA 4" color=red rank=1]
+	Akron1 [label="Akron 13" color=red rank=1]
+	UCLA2 [label="UCLA 4" color=red rank=2]
+	UCLA1 -> UCLA2
+	Akron1 -> UCLA2
+	Texas1 [label="Texas 6" color=red rank=1]
+	"Virginia Tech1" [label="Virginia Tech 11" color=red rank=1]
+	Texas2 [label="Texas 6" color=red rank=2]
+	Texas1 -> Texas2
+	"Virginia Tech1" -> Texas2
+	Purdue1 [label="Purdue 3" color=red rank=1]
+	Yale1 [label="Yale 14" color=red rank=1]
+	Purdue2 [label="Purdue 3" color=red rank=2]
+	Purdue1 -> Purdue2
+	Yale1 -> Purdue2
+	"Murray St1" [label="Murray St 7" color=red rank=1]
+	"San Francisco1" [label="San Francisco 10" color=red rank=1]
+	"Murray St2" [label="Murray St 7" color=red rank=2]
+	"Murray St1" -> "Murray St2"
+	"San Francisco1" -> "Murray St2"
+	Kentucky1 [label="Kentucky 2" color=red rank=1]
+	"St Peter's1" [label="St Peter's 15" color=red rank=1]
+	Kentucky2 [label="Kentucky 2" color=red rank=2]
+	Kentucky1 -> Kentucky2
+	"St Peter's1" -> Kentucky2
+	Gonzaga1 [label="Gonzaga 1" color=orange rank=1]
+	"Georgia St1" [label="Georgia St 16" color=orange rank=1]
+	Gonzaga2 [label="Gonzaga 1" color=orange rank=2]
+	Gonzaga1 -> Gonzaga2
+	"Georgia St1" -> Gonzaga2
+	"Boise St1" [label="Boise St 8" color=orange rank=1]
+	Memphis1 [label="Memphis 9" color=orange rank=1]
+	"Boise St2" [label="Boise St 8" color=orange rank=2]
+	"Boise St1" -> "Boise St2"
+	Memphis1 -> "Boise St2"
+	Connecticut1 [label="Connecticut 5" color=orange rank=1]
+	"New Mexico St1" [label="New Mexico St 12" color=orange rank=1]
+	Connecticut2 [label="Connecticut 5" color=orange rank=2]
+	Connecticut1 -> Connecticut2
+	"New Mexico St1" -> Connecticut2
+	Arkansas1 [label="Arkansas 4" color=orange rank=1]
+	Vermont1 [label="Vermont 13" color=orange rank=1]
+	Arkansas2 [label="Arkansas 4" color=orange rank=2]
+	Arkansas1 -> Arkansas2
+	Vermont1 -> Arkansas2
+	Alabama1 [label="Alabama 6" color=orange rank=1]
+	"Notre Dame1" [label="Notre Dame 11" color=orange rank=1]
+	Alabama2 [label="Alabama 6" color=orange rank=2]
+	Alabama1 -> Alabama2
+	"Notre Dame1" -> Alabama2
+	"Texas Tech1" [label="Texas Tech 3" color=orange rank=1]
+	"Montana St1" [label="Montana St 14" color=orange rank=1]
+	"Texas Tech2" [label="Texas Tech 3" color=orange rank=2]
+	"Texas Tech1" -> "Texas Tech2"
+	"Montana St1" -> "Texas Tech2"
+	"Michigan St1" [label="Michigan St 7" color=orange rank=1]
+	Davidson1 [label="Davidson 10" color=orange rank=1]
+	"Michigan St2" [label="Michigan St 7" color=orange rank=2]
+	"Michigan St1" -> "Michigan St2"
+	Davidson1 -> "Michigan St2"
+	Kansas1 [label="Kansas 1" color=purple rank=1]
+	"TX Southern1" [label="TX Southern 16" color=purple rank=1]
+	Kansas2 [label="Kansas 1" color=purple rank=2]
+	Kansas2 -> Kansas1
+	Kansas2 -> "TX Southern1"
+	"Ohio St1" [label="Ohio St 7" color=yellow rank=1]
+	"Loyola-Chicago1" [label="Loyola-Chicago 10" color=yellow rank=1]
+	"Ohio St2" [label="Ohio St 7" color=yellow rank=2]
+	"Ohio St2" -> "Ohio St1"
+	"Ohio St2" -> "Loyola-Chicago1"
+	"San Diego St1" [label="San Diego St 8" color=purple rank=1]
+	Creighton1 [label="Creighton 9" color=purple rank=1]
+	"San Diego St2" [label="San Diego St 8" color=purple rank=2]
+	"San Diego St2" -> "San Diego St1"
+	"San Diego St2" -> Creighton1
+	Iowa1 [label="Iowa 5" color=purple rank=1]
+	Richmond1 [label="Richmond 12" color=purple rank=1]
+	Iowa2 [label="Iowa 5" color=purple rank=2]
+	Iowa2 -> Iowa1
+	Iowa2 -> Richmond1
+	Providence1 [label="Providence 4" color=purple rank=1]
+	"S Dakota St1" [label="S Dakota St 13" color=purple rank=1]
+	Providence2 [label="Providence 4" color=purple rank=2]
+	Providence2 -> Providence1
+	Providence2 -> "S Dakota St1"
+	LSU1 [label="LSU 6" color=purple rank=1]
+	"Iowa St1" [label="Iowa St 11" color=purple rank=1]
+	LSU2 [label="LSU 6" color=purple rank=2]
+	LSU2 -> LSU1
+	LSU2 -> "Iowa St1"
+	Wisconsin1 [label="Wisconsin 3" color=purple rank=1]
+	Colgate1 [label="Colgate 14" color=purple rank=1]
+	Wisconsin2 [label="Wisconsin 3" color=purple rank=2]
+	Wisconsin2 -> Wisconsin1
+	Wisconsin2 -> Colgate1
+	USC1 [label="USC 7" color=purple rank=1]
+	"Miami FL1" [label="Miami FL 10" color=purple rank=1]
+	USC2 [label="USC 7" color=purple rank=2]
+	USC2 -> USC1
+	USC2 -> "Miami FL1"
+	Auburn1 [label="Auburn 2" color=purple rank=1]
+	"Jacksonville St1" [label="Jacksonville St 15" color=purple rank=1]
+	Auburn2 [label="Auburn 2" color=purple rank=2]
+	Auburn2 -> Auburn1
+	Auburn2 -> "Jacksonville St1"
+	Arizona1 [label="Arizona 1" color=yellow rank=1]
+	"Wright St1" [label="Wright St 16" color=yellow rank=1]
+	Arizona2 [label="Arizona 1" color=yellow rank=2]
+	Arizona2 -> Arizona1
+	Arizona2 -> "Wright St1"
+	"Seton Hall1" [label="Seton Hall 8" color=yellow rank=1]
+	TCU1 [label="TCU 9" color=yellow rank=1]
+	"Seton Hall2" [label="Seton Hall 8" color=yellow rank=2]
+	"Seton Hall2" -> "Seton Hall1"
+	"Seton Hall2" -> TCU1
+	Houston1 [label="Houston 5" color=yellow rank=1]
+	UAB1 [label="UAB 12" color=yellow rank=1]
+	Houston2 [label="Houston 5" color=yellow rank=2]
+	Houston2 -> Houston1
+	Houston2 -> UAB1
+	Illinois1 [label="Illinois 4" color=yellow rank=1]
+	Chattanooga1 [label="Chattanooga 13" color=yellow rank=1]
+	Illinois2 [label="Illinois 4" color=yellow rank=2]
+	Illinois2 -> Illinois1
+	Illinois2 -> Chattanooga1
+	"Colorado St1" [label="Colorado St 6" color=yellow rank=1]
+	Michigan1 [label="Michigan 11" color=yellow rank=1]
+	"Colorado St2" [label="Colorado St 6" color=yellow rank=2]
+	"Colorado St2" -> "Colorado St1"
+	"Colorado St2" -> Michigan1
+	Tennessee1 [label="Tennessee 3" color=yellow rank=1]
+	Longwood1 [label="Longwood 14" color=yellow rank=1]
+	Tennessee2 [label="Tennessee 3" color=yellow rank=2]
+	Tennessee2 -> Tennessee1
+	Tennessee2 -> Longwood1
+	Villanova1 [label="Villanova 2" color=yellow rank=1]
+	Delaware1 [label="Delaware 15" color=yellow rank=1]
+	Villanova2 [label="Villanova 2" color=yellow rank=2]
+	Villanova2 -> Villanova1
+	Villanova2 -> Delaware1
+	round6 [label=round6 color=green fontcolor=black fontsize=16 pos="5,-5!" shape=plaintext style=filled]
+	round5 [label=round5 color=blue fontcolor=black fontsize=16 pos="2.5,2.5!" shape=plaintext style=filled]
+	West [label=West color=yellow fontcolor=black fontsize=16 pos="0,10!" shape=plaintext style=filled]
+	South [label=South color=purple fontcolor=black fontsize=16 pos="10,0!" shape=plaintext style=filled]
+	Midwest [label=Midwest color=orange fontcolor=black fontsize=16 pos="0,-10!" shape=plaintext style=filled]
+	East [label=East color=red fontcolor=black fontsize=16 pos="-10,0!" shape=plaintext style=filled]
+}
