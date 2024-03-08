@@ -4,12 +4,13 @@ import matplotlib.pyplot as plt
 from tqdm.autonotebook import tqdm
 from bracketology_rl import Bracket, Game, Team
 import warnings
-import gym
+import gymnasium as gym
 import numpy as np
 from tourney_tools import * 
 warnings.filterwarnings('ignore')
 from IPython.display import display
-import graphviz
+# import graphviz
+
 
 
 
@@ -352,6 +353,7 @@ class TournamentEnv(gym.Env):
 
         ## start by  getting the score from the action
         done=False
+        truncated=False
         self.action=self.get_actions(action)
         ## chose the winning team
         winning_team=self.choose_team(self.action)
@@ -374,6 +376,7 @@ class TournamentEnv(gym.Env):
                 if self.round_score==0 and self.bust_stop:
                     
                     done=True
+                    truncated=True
                     game=winning_team
 
                 ## reset the round score at the end of each round
@@ -403,7 +406,7 @@ class TournamentEnv(gym.Env):
                 'match_up':game
         }
 
-        return obs,score,done, info
+        return obs,score,done,truncated, info
 
     def choose_random_winner(self,game):
         # Extract Teams from Game

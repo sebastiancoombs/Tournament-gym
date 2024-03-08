@@ -12,7 +12,7 @@ from sklearn.preprocessing import FunctionTransformer
 from sklearn.decomposition import PCA
 
 #classification model
-import xgboost as xgb
+# import xgboost as xgb
 
 #metrics
 from sklearn.metrics import accuracy_score,confusion_matrix,roc_auc_score,classification_report
