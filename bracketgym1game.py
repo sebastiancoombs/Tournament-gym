@@ -1,7 +1,7 @@
 import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
-from tqdm.autonotebook import tqdm
+from tqdm.auto import tqdm
 from bracketology_rl import Bracket, Game, Team
 import warnings
 import gymnasium as gym
@@ -547,7 +547,7 @@ class TournamentEnv(gym.Env):
         self.bracket=Bracket(self.season)
         self.bracket.sim(self.tracked_winner)
 
-    def reset(self,season=None,weight_scores=True,track_wins=False):
+    def reset(self,seed=None,season=None,weight_scores=True,track_wins=False):
         if season!= None:
             self.season = season
         else:             
@@ -614,8 +614,16 @@ class TournamentEnv(gym.Env):
         except:obs=obs.toarray()
         finally:obs=obs.flatten().astype(np.float32)
         
-
-        return obs
+        info= {'round':self.current_round,
+                'game_num':self.current_step,
+                'score':0,
+                'num_correct':self.num_correct,
+                'round_score':self.round_score,
+                'total_score':self.total_score,
+                'espisode_start':self.total_score,
+                'match_up':game
+        }
+        return obs,info
     
     def render(self,score=None):
 
