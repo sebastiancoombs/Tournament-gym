@@ -1,6 +1,6 @@
 import json
 from pkg_resources import resource_filename
-filepath = resource_filename('bracketology_rl', 'data/brackets_2022.json')
+filepath = resource_filename('bracketology_rl', 'data/Mbrackets_2023.json')
 with open(filepath, 'r') as f:
     brackets_dict = json.load(f)
     # print(brackets_dict)

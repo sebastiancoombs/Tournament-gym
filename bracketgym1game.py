@@ -497,6 +497,27 @@ class TournamentEnv(gym.Env):
 
         return winning_team
 
+    def get_correct_action(self):
+
+        data=self.current_data
+        next_step=self.current_step
+
+        top_team = data.loc[next_step].top_team
+        bottom_team = data.loc[next_step].bottom_team
+
+        teams = [top_team,bottom_team]
+
+        winners=self.result_dict[next_step]
+        if top_team in winners:
+            action=0
+        elif bottom_team in winners: 
+            action=1
+        else :
+            print(teams)
+            print(winners)
+            print(self.result_dict[next_step])
+        return action
+
     def score_game(self,team):
         possible_score=self.score_dict[self.current_round]
         score=0
