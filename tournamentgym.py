@@ -269,8 +269,7 @@ class TournmentNode():
         return final
 
 class TournamentEnv(gym.Env):
-    valid_years = [y for y in range(2003, 2024)]
-    valid_years.remove(2020)
+
     
     def __init__(self,season,
                  team_stats=None,
@@ -279,9 +278,13 @@ class TournamentEnv(gym.Env):
                  discrete=True,
                  MW='M',
                  loading_bar=True,
-
+                exclude_seasons=[2023],
                  historypath=None):
-
+        self.valid_years = [y for y in range(2003, 2024)]
+        self.valid_years.remove(2020)
+        if exclude_seasons:
+            for s in exclude_seasons:
+                self.valid_years.remove(s)
         self.verbose=verbose
         self.MW=MW
         self.display_results=display_results
