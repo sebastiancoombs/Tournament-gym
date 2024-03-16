@@ -160,37 +160,34 @@ class TournamentEnv(gym.Env):
 
     def get_step_dict(self,bracket):
         results=bracket.result
-        step_dir={}
+        winner_dir={}
         round_step_dir={}
         round_indexs={}
-        i=0 # index 0
+        r=0 # index 0
         last_i=0 # start index
-        r=0
+        game_num=0
         ## get the length of teams in the round
-        for round in results:
+
+        for i,round in enumerate(results):
             #round rumber
-            r+=1
+            r=i+1
             n_teams=int(len(results[round]))
             n_games=int(n_teams/2)
             #update the last index for after the first round
             last_i+=n_games
 
-            if round=='winner':
-                step_dir[last_i]=[results[round]['Team']]
-                round_step_dir[last_i]=r
+            winner_dir[r]=[team['Team'] for team in results[round]]
+            round_end=game_num+n_games
+            for j in range(game_num,round_end):
+                round_step_dir[j]=r
 
-            else:
-                for j in range(i,last_i):
-                    step_dir[j]=[team['Team'] for team in results[round]]
-                    round_step_dir[j]=r
-                
-                round_indexs[r]=n_games
+            game_num+=round_end
+            round_indexs[r]=n_games
 
-            i= last_i
-        round_step_dir[i-1]=r
-        round_indexs[r]=[last_i-2]
+        round_step_dir[game_num-1]=r
+        round_indexs[r]=[game_num-2]
         ## step->team_list for scoring,step-> round for steping,  round->step_index list for updating matchup data indexs      
-        return step_dir,round_step_dir,round_indexs
+        return winner_dir,round_step_dir,round_indexs
 
     def get_scoring_dict(self,bracket):
             score_dir={}
@@ -298,7 +295,6 @@ class TournamentEnv(gym.Env):
         index=self.current_matchups.index
         if step>index[-1]:
             self.current_round+=1
-        return self.current_round
 
     def generate_matchups(self):
         bracket_round=self.round_functions[self.last_round].split('_')[1:]
@@ -354,20 +350,21 @@ class TournamentEnv(gym.Env):
         ## start by  getting the score from the action
         done=False
         truncated=False
-        self.action=self.get_actions(action)
+        action=self.get_actions(action)
         ## chose the winning team
-        winning_team=self.choose_team(self.action)
+        winning_team=self.choose_team(action)
         
         #get your score
         score=self.score_game(team=winning_team)
-        #step forward
 
+        #step forward
         self.current_step+=1
-        self.current_round=self.update_round()
+        self.update_round()
         
         if self.current_round>6:
             ## done if youre on round 7
             done=True
+            truncated=False
             obs=self.last_obs
 
         if not done:
@@ -507,21 +504,22 @@ class TournamentEnv(gym.Env):
 
         teams = [top_team,bottom_team]
 
-        winners=self.result_dict[next_step]
+        winners=self.result_dict[self.current_round]
         if top_team in winners:
             action=0
         elif bottom_team in winners: 
             action=1
         else :
+            action=['oops']
             print(teams)
             print(winners)
-            print(self.result_dict[next_step])
+            print(len(self.result_dict[self.current_round]))
         return action
 
     def score_game(self,team):
         possible_score=self.score_dict[self.current_round]
         score=0
-        if team in self.result_dict[self.current_step]:
+        if team in self.result_dict[self.current_round]:
             score=possible_score
             self.num_correct+=1
         else:
