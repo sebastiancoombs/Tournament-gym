@@ -18,7 +18,7 @@ from tqdm.autonotebook import tqdm
 import traceback
 import copy
 copy.deepcopy
-
+import graphviz
 class Team():
 
     """
@@ -120,7 +120,7 @@ class TournmentNode():
             self.teams=self._true_teams
             self.team_positions={str(t.seed):t.name for t in self._true_teams.values()}
         
-        elif len(self.previous_nodes)==1 and self.round==1:
+        elif len(self.previous_nodes)==1 and self.round==1 and self._true_teams:
             previous_teams=[]
             for game in self.previous_nodes.values():
                 for name,team in game.teams.items():
@@ -270,29 +270,34 @@ class TournmentNode():
 
 class TournamentEnv(gym.Env):
 
-    
     def __init__(self,season,
                  team_stats=None,
                  verbose=False,
                  display_results=False,
                  discrete=True,
+                 shuffle=True,
                  MW='M',
-                 loading_bar=True,
-                exclude_seasons=[2023],
+                 loading_bar=False,
+                 reward_on_round_end=True,
+                 exclude_seasons=[],
                  historypath=None):
-        self.valid_years = [y for y in range(2003, 2024)]
+        self.valid_years = [y for y in range(2003, 2025)]
         self.valid_years.remove(2020)
+        self.reward_on_round_end=reward_on_round_end
+        self.shuffle=shuffle
         if exclude_seasons:
             for s in exclude_seasons:
-                self.valid_years.remove(s)
+                if s in self.valid_years:
+                    self.valid_years.remove(s)
         self.verbose=verbose
+        self.discrete=discrete
         self.MW=MW
         self.display_results=display_results
         self.season=season
 
 
         if historypath==None:
-            self.historypath = f'C:/Users/sebas/IDrive-Sync/MetaLocalLLC/RL-Bots/Tournament-gym/bracketology_rl/data/{MW}better_brackets2024.json'
+            self.historypath = f'bracketology_rl/data/{MW}better_brackets2024.json'
         else:
             self.historypath = historypath
 
@@ -322,9 +327,10 @@ class TournamentEnv(gym.Env):
         self.max_step=None
         self.n_simulations=0
 
-        if loading_bar:
+        if loading_bar==True:
             self.games_bar=tqdm(range(10000))
             self.games_bar.set_description(f'Reset! Sim {self.n_simulations} {self.__repr__()}')
+        else:self.games_bar=None
         self.loading_bar=loading_bar
 
         obs,info=self.reset(season=season)
@@ -335,9 +341,12 @@ class TournamentEnv(gym.Env):
                                                 shape=obs.shape, 
                                                 dtype=np.float32
                                                 )
-
-        self.action_space = gym.spaces.Discrete(2)## pick between two teams in the round
-
+        if self.discrete:
+            self.action_space = gym.spaces.Discrete(2)## pick between two teams in the round
+        else:
+            self.action_space = gym.spaces.Box(0,1,
+                                               shape=(2,)
+                                               )
         return 
 
 
@@ -347,13 +356,14 @@ class TournamentEnv(gym.Env):
 
         round, slot=self.steps.loc[self.current_step]
         game=self.bracket[round][slot]
+        action=self.check_action(action)
         reward=game.predict_winner(action)
         self.score+=reward
         self.round_score+=reward
         if reward>0:
 
             self.n_correct+=1
-
+        
         self.last_round=int(round)
         ## step to the next round 
         self.current_step+=1
@@ -364,8 +374,12 @@ class TournamentEnv(gym.Env):
 
             next_game=self.bracket[next_round][next_slot]
             observation=next_game.get_game_stats()
-            info=self.get_info()
-
+            if self. reward_on_round_end:
+                if round != next_round:
+                    reward=self.round_score
+                else:
+                    reward=0.1
+            
 
         else:
             observation=np.zeros(self.observation_space.shape)
@@ -411,7 +425,7 @@ class TournamentEnv(gym.Env):
 
         self.n_simulations+=1
 
-        if self.loading_bar:
+        if self.loading_bar==True:
             self.games_bar.update(1)
             self.games_bar.set_description(f'Reset! Sim {self.n_simulations} Bracket for year {self.season}')
 
@@ -450,13 +464,21 @@ class TournamentEnv(gym.Env):
         return info
 
     def check_action(self ,action):
+        if self.discrete:
+            return action
         #2 actions for each game pick the top or bottom team
-        return action
+        else:
+            return int(np.argmax(action))
 
     def cheat_action(self):
         round, slot=self.steps.loc[self.current_step]
         game=self.bracket[round][slot]
         correct_action=game.get_winning_action()
+        if not self.discrete:
+            actions=np.zeros(self.action_space.shape)
+            actions[correct_action]=1
+            correct_action=actions
+            
         return correct_action
 
     def check_season(self,season):
@@ -498,6 +520,7 @@ class TournamentEnv(gym.Env):
         step_id=0
         self.bracket={}
         self.game_step_map={}
+        add_results=False if self.season==2024 else True
         for r,round in self.slots.items():
             if r != '7':
                 self.bracket[r]={}
@@ -542,15 +565,17 @@ class TournamentEnv(gym.Env):
         champ_game=[c for c in self.bracket[last_round].values()][0]
         winner_node=TournmentNode(slot='CHAMP',round=champ_round)
         winner_node.link_previous_node(champ_game)
-        winner_name=self.results.get('7')[0]
-        if winner_name:
-            self.winner=winner_name
-            winner_ob=Team(name=winner_name,seed=self.team_map[winner_name])
-            winner_node.add_result(winner_ob)
-        winner_ob.slot='CHAMP'
-        self.bracket[str(champ_round)]=winner_ob
-        self.max_step=max(self.game_step_map)
-        self.game_step_map[self.max_step+1]='Champ'
+        if self.results!=None:
+            winner_name=self.results.get('7')[0]
+            if winner_name:
+                
+                self.winner=winner_name
+                winner_ob=Team(name=winner_name,seed=self.team_map[winner_name])
+                winner_node.add_result(winner_ob)
+            winner_ob.slot='CHAMP'
+            self.bracket[str(champ_round)]=winner_ob
+            self.max_step=max(self.game_step_map)
+            self.game_step_map[self.max_step+1]='Champ'
 
     def link_nodes(self):
         for r_num, round  in self.bracket.items():
@@ -564,7 +589,6 @@ class TournamentEnv(gym.Env):
                     next_node=next_round[next_slot]
                     next_node.link_previous_node(node,verbose=self.verbose)
                 
-
     def add_team_stats(self):
         data=self.team_stats
         for r_num,round in self.bracket.items():
@@ -593,14 +617,88 @@ class TournamentEnv(gym.Env):
         steps=pd.DataFrame().from_dict(self.game_step_map).T
         
         steps.columns=['Round','Slot']
+        self.steps=steps
         shuffler=[]
         for round,data in steps.groupby('Round'):
             ids=[c for c in data.index]
             random.shuffle(ids)
             [shuffler.append(i) for i in ids]
-        self.steps=steps.loc[shuffler].reset_index(drop=True)
+        if self.shuffle:
+            self.steps=steps.loc[shuffler].reset_index(drop=True)
 
-        
+    def render(self):
+        graph = graphviz.Digraph(f'March Madness Bracket {self.season}',
+                                    engine='dot',
+                                    node_attr={'shape': 'rounded',
+                                            'color': 'lightblue2',
+                                            'fixedsize':'false', 
+                                            'width':'1',
+                                            'style':'filled',
+
+                                            })
+        # Set Graphviz attributes
+        graph.attr(label=f'March Madness Bracket {self.season}')
+        # graph.attr(layout="neato",)
+        graph.attr(rankdir='RL', nodesep='.2', ranksep='.3', splines='line',size='40,40')
+        graph.graph_attr.update(landscape="false")   
+        def bracket_waterfall(game,color):
+            slot=game.slot
+            finals= [4,5,6,7]
+            round=game.round
+
+            region=slot[:3]
+            
+            cust_name=f'Cluster_{region}'
+            rotate_dict={
+                    'R6C':'TB', 
+                    'R5':'TB',
+                    'W':'RL', 
+                    'Y':'RL', 
+                    'X':'LR', 
+                    'Z':'LR'
+                    }
+            
+            with graph.subgraph(name=cust_name,) as c:
+                    c.graph_attr.update(label= region )
+                    # c.graph_attr.update(orientation= rotate_dict[region])
+                    game_params={
+                        'label':f'{game.winner.seed} {game.winner.name}',
+                        'color':color,
+                        'rank':f'{game.round}',
+                            'group':region
+                            }
+                    c.node(slot, **game_params)
+                    c.edge(slot,game.next_slot,constraint='true',samehead='true')
+                    # print(game)
+                    if round>1:
+                            for prev_game in game.previous_nodes.values():
+                                    if game. winner.name==prev_game.winner.name:
+                                            color='green'
+                                    else:
+                                            color='red'
+                                    bracket_waterfall(prev_game,color)
+                            
+                    else:
+                            for team in game.teams.values():
+                                    if game. winner.name==team.name:
+                                            color='green'
+                                    else:
+                                            color='red'
+                                    team_params={
+                                                    'label':f'{team.seed} {team.name}',
+                                                    'color':color,
+                                                    'rank':f'{game.round-1}',
+                                                    'group':region
+
+                                                    }
+                                    
+                                    c.node(f'{team.name}{slot}',**team_params )
+                                    c.edge(f'{team.name}{slot}',slot,)
+
+
+        final_game=self.bracket['6']['R6CH']
+        bracket_waterfall(final_game,color='green')
+        graph.render(f'march_madness_bracket {self.season}', view=True)
 
     def __repr__(self):
 

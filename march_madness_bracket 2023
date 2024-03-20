@@ -1,0 +1,449 @@
+digraph "March Madness Bracket 2023" {
+	graph [landscape=false]
+	node [color=lightblue2 fixedsize=false shape=rounded style=filled width=1]
+	label="March Madness Bracket 2023"
+	nodesep=.2 rankdir=RL ranksep=.3 size="40,40" splines=line
+	subgraph Cluster_R1W {
+		graph [label=R1W]
+		R1W1 [label="1 Purdue" color=green group=R1W rank=1]
+		R1W1 -> R2W1 [constraint=true samehead=true]
+		PurdueR1W1 [label="1 Purdue" color=green group=R1W rank=0]
+		PurdueR1W1 -> R1W1
+		"TX SouthernR1W1" [label="12 TX Southern" color=red group=R1W rank=0]
+		"TX SouthernR1W1" -> R1W1
+	}
+	subgraph Cluster_R1W {
+		graph [label=R1W]
+		R1W8 [label="8 Memphis" color=red group=R1W rank=1]
+		R1W8 -> R2W1 [constraint=true samehead=true]
+		"FL AtlanticR1W8" [label="9 FL Atlantic" color=red group=R1W rank=0]
+		"FL AtlanticR1W8" -> R1W8
+		MemphisR1W8 [label="8 Memphis" color=green group=R1W rank=0]
+		MemphisR1W8 -> R1W8
+	}
+	subgraph Cluster_R2W {
+		graph [label=R2W]
+		R2W1 [label="1 Purdue" color=green group=R2W rank=2]
+		R2W1 -> R3W1 [constraint=true samehead=true]
+	}
+	subgraph Cluster_R1W {
+		graph [label=R1W]
+		R1W4 [label="13 Louisiana" color=red group=R1W rank=1]
+		R1W4 -> R2W4 [constraint=true samehead=true]
+		TennesseeR1W4 [label="4 Tennessee" color=red group=R1W rank=0]
+		TennesseeR1W4 -> R1W4
+		LouisianaR1W4 [label="13 Louisiana" color=green group=R1W rank=0]
+		LouisianaR1W4 -> R1W4
+	}
+	subgraph Cluster_R1W {
+		graph [label=R1W]
+		R1W5 [label="5 Duke" color=green group=R1W rank=1]
+		R1W5 -> R2W4 [constraint=true samehead=true]
+		DukeR1W5 [label="5 Duke" color=green group=R1W rank=0]
+		DukeR1W5 -> R1W5
+		"Oral RobertsR1W5" [label="12 Oral Roberts" color=red group=R1W rank=0]
+		"Oral RobertsR1W5" -> R1W5
+	}
+	subgraph Cluster_R2W {
+		graph [label=R2W]
+		R2W4 [label="5 Duke" color=red group=R2W rank=2]
+		R2W4 -> R3W1 [constraint=true samehead=true]
+	}
+	subgraph Cluster_R3W {
+		graph [label=R3W]
+		R3W1 [label="1 Purdue" color=red group=R3W rank=3]
+		R3W1 -> R4W1 [constraint=true samehead=true]
+	}
+	subgraph Cluster_R1W {
+		graph [label=R1W]
+		R1W2 [label="15 Vermont" color=red group=R1W rank=1]
+		R1W2 -> R2W2 [constraint=true samehead=true]
+		MarquetteR1W2 [label="2 Marquette" color=red group=R1W rank=0]
+		MarquetteR1W2 -> R1W2
+		VermontR1W2 [label="15 Vermont" color=green group=R1W rank=0]
+		VermontR1W2 -> R1W2
+	}
+	subgraph Cluster_R1W {
+		graph [label=R1W]
+		R1W7 [label="10 USC" color=green group=R1W rank=1]
+		R1W7 -> R2W2 [constraint=true samehead=true]
+		"Michigan StR1W7" [label="7 Michigan St" color=red group=R1W rank=0]
+		"Michigan StR1W7" -> R1W7
+		USCR1W7 [label="10 USC" color=green group=R1W rank=0]
+		USCR1W7 -> R1W7
+	}
+	subgraph Cluster_R2W {
+		graph [label=R2W]
+		R2W2 [label="10 USC" color=green group=R2W rank=2]
+		R2W2 -> R3W2 [constraint=true samehead=true]
+	}
+	subgraph Cluster_R1W {
+		graph [label=R1W]
+		R1W3 [label="3 Kansas St" color=red group=R1W rank=1]
+		R1W3 -> R2W3 [constraint=true samehead=true]
+		"Kansas StR1W3" [label="3 Kansas St" color=green group=R1W rank=0]
+		"Kansas StR1W3" -> R1W3
+		"Montana StR1W3" [label="14 Montana St" color=red group=R1W rank=0]
+		"Montana StR1W3" -> R1W3
+	}
+	subgraph Cluster_R1W {
+		graph [label=R1W]
+		R1W6 [label="11 Providence" color=green group=R1W rank=1]
+		R1W6 -> R2W3 [constraint=true samehead=true]
+		KentuckyR1W6 [label="6 Kentucky" color=red group=R1W rank=0]
+		KentuckyR1W6 -> R1W6
+		ProvidenceR1W6 [label="11 Providence" color=green group=R1W rank=0]
+		ProvidenceR1W6 -> R1W6
+	}
+	subgraph Cluster_R2W {
+		graph [label=R2W]
+		R2W3 [label="11 Providence" color=red group=R2W rank=2]
+		R2W3 -> R3W2 [constraint=true samehead=true]
+	}
+	subgraph Cluster_R3W {
+		graph [label=R3W]
+		R3W2 [label="10 USC" color=green group=R3W rank=3]
+		R3W2 -> R4W1 [constraint=true samehead=true]
+	}
+	subgraph Cluster_R4W {
+		graph [label=R4W]
+		R4W1 [label="10 USC" color=red group=R4W rank=4]
+		R4W1 -> R5WX [constraint=true samehead=true]
+	}
+	subgraph Cluster_R1X {
+		graph [label=R1X]
+		R1X1 [label="1 Alabama" color=green group=R1X rank=1]
+		R1X1 -> R2X1 [constraint=true samehead=true]
+		AlabamaR1X1 [label="1 Alabama" color=green group=R1X rank=0]
+		AlabamaR1X1 -> R1X1
+		"TAM C. ChristiR1X1" [label="16 TAM C. Christi" color=red group=R1X rank=0]
+		"TAM C. ChristiR1X1" -> R1X1
+	}
+	subgraph Cluster_R1X {
+		graph [label=R1X]
+		R1X8 [label="9 West Virginia" color=red group=R1X rank=1]
+		R1X8 -> R2X1 [constraint=true samehead=true]
+		MarylandR1X8 [label="8 Maryland" color=red group=R1X rank=0]
+		MarylandR1X8 -> R1X8
+		"West VirginiaR1X8" [label="9 West Virginia" color=green group=R1X rank=0]
+		"West VirginiaR1X8" -> R1X8
+	}
+	subgraph Cluster_R2X {
+		graph [label=R2X]
+		R2X1 [label="1 Alabama" color=green group=R2X rank=2]
+		R2X1 -> R3X1 [constraint=true samehead=true]
+	}
+	subgraph Cluster_R1X {
+		graph [label=R1X]
+		R1X4 [label="13 Furman" color=green group=R1X rank=1]
+		R1X4 -> R2X4 [constraint=true samehead=true]
+		FurmanR1X4 [label="13 Furman" color=green group=R1X rank=0]
+		FurmanR1X4 -> R1X4
+		VirginiaR1X4 [label="4 Virginia" color=red group=R1X rank=0]
+		VirginiaR1X4 -> R1X4
+	}
+	subgraph Cluster_R1X {
+		graph [label=R1X]
+		R1X5 [label="5 San Diego St" color=red group=R1X rank=1]
+		R1X5 -> R2X4 [constraint=true samehead=true]
+		"San Diego StR1X5" [label="5 San Diego St" color=green group=R1X rank=0]
+		"San Diego StR1X5" -> R1X5
+		"Col CharlestonR1X5" [label="12 Col Charleston" color=red group=R1X rank=0]
+		"Col CharlestonR1X5" -> R1X5
+	}
+	subgraph Cluster_R2X {
+		graph [label=R2X]
+		R2X4 [label="13 Furman" color=red group=R2X rank=2]
+		R2X4 -> R3X1 [constraint=true samehead=true]
+	}
+	subgraph Cluster_R3X {
+		graph [label=R3X]
+		R3X1 [label="1 Alabama" color=green group=R3X rank=3]
+		R3X1 -> R4X1 [constraint=true samehead=true]
+	}
+	subgraph Cluster_R1X {
+		graph [label=R1X]
+		R1X2 [label="2 Arizona" color=red group=R1X rank=1]
+		R1X2 -> R2X2 [constraint=true samehead=true]
+		PrincetonR1X2 [label="15 Princeton" color=red group=R1X rank=0]
+		PrincetonR1X2 -> R1X2
+		ArizonaR1X2 [label="2 Arizona" color=green group=R1X rank=0]
+		ArizonaR1X2 -> R1X2
+	}
+	subgraph Cluster_R1X {
+		graph [label=R1X]
+		R1X7 [label="10 Utah St" color=green group=R1X rank=1]
+		R1X7 -> R2X2 [constraint=true samehead=true]
+		MissouriR1X7 [label="7 Missouri" color=red group=R1X rank=0]
+		MissouriR1X7 -> R1X7
+		"Utah StR1X7" [label="10 Utah St" color=green group=R1X rank=0]
+		"Utah StR1X7" -> R1X7
+	}
+	subgraph Cluster_R2X {
+		graph [label=R2X]
+		R2X2 [label="10 Utah St" color=green group=R2X rank=2]
+		R2X2 -> R3X2 [constraint=true samehead=true]
+	}
+	subgraph Cluster_R1X {
+		graph [label=R1X]
+		R1X3 [label="3 Baylor" color=green group=R1X rank=1]
+		R1X3 -> R2X3 [constraint=true samehead=true]
+		BaylorR1X3 [label="3 Baylor" color=green group=R1X rank=0]
+		BaylorR1X3 -> R1X3
+		"UC Santa BarbaraR1X3" [label="14 UC Santa Barbara" color=red group=R1X rank=0]
+		"UC Santa BarbaraR1X3" -> R1X3
+	}
+	subgraph Cluster_R1X {
+		graph [label=R1X]
+		R1X6 [label="11 NC State" color=red group=R1X rank=1]
+		R1X6 -> R2X3 [constraint=true samehead=true]
+		CreightonR1X6 [label="6 Creighton" color=red group=R1X rank=0]
+		CreightonR1X6 -> R1X6
+		"NC StateR1X6" [label="11 NC State" color=green group=R1X rank=0]
+		"NC StateR1X6" -> R1X6
+	}
+	subgraph Cluster_R2X {
+		graph [label=R2X]
+		R2X3 [label="3 Baylor" color=red group=R2X rank=2]
+		R2X3 -> R3X2 [constraint=true samehead=true]
+	}
+	subgraph Cluster_R3X {
+		graph [label=R3X]
+		R3X2 [label="10 Utah St" color=red group=R3X rank=3]
+		R3X2 -> R4X1 [constraint=true samehead=true]
+	}
+	subgraph Cluster_R4X {
+		graph [label=R4X]
+		R4X1 [label="1 Alabama" color=green group=R4X rank=4]
+		R4X1 -> R5WX [constraint=true samehead=true]
+	}
+	subgraph Cluster_R5W {
+		graph [label=R5W]
+		R5WX [label="1 Alabama" color=red group=R5W rank=5]
+		R5WX -> R6CH [constraint=true samehead=true]
+	}
+	subgraph Cluster_R1Y {
+		graph [label=R1Y]
+		R1Y1 [label="1 Houston" color=green group=R1Y rank=1]
+		R1Y1 -> R2Y1 [constraint=true samehead=true]
+		HoustonR1Y1 [label="1 Houston" color=green group=R1Y rank=0]
+		HoustonR1Y1 -> R1Y1
+		"N KentuckyR1Y1" [label="16 N Kentucky" color=red group=R1Y rank=0]
+		"N KentuckyR1Y1" -> R1Y1
+	}
+	subgraph Cluster_R1Y {
+		graph [label=R1Y]
+		R1Y8 [label="8 Iowa" color=red group=R1Y rank=1]
+		R1Y8 -> R2Y1 [constraint=true samehead=true]
+		AuburnR1Y8 [label="9 Auburn" color=red group=R1Y rank=0]
+		AuburnR1Y8 -> R1Y8
+		IowaR1Y8 [label="8 Iowa" color=green group=R1Y rank=0]
+		IowaR1Y8 -> R1Y8
+	}
+	subgraph Cluster_R2Y {
+		graph [label=R2Y]
+		R2Y1 [label="1 Houston" color=red group=R2Y rank=2]
+		R2Y1 -> R3Y1 [constraint=true samehead=true]
+	}
+	subgraph Cluster_R1Y {
+		graph [label=R1Y]
+		R1Y4 [label="13 Kent" color=green group=R1Y rank=1]
+		R1Y4 -> R2Y4 [constraint=true samehead=true]
+		IndianaR1Y4 [label="4 Indiana" color=red group=R1Y rank=0]
+		IndianaR1Y4 -> R1Y4
+		KentR1Y4 [label="13 Kent" color=green group=R1Y rank=0]
+		KentR1Y4 -> R1Y4
+	}
+	subgraph Cluster_R1Y {
+		graph [label=R1Y]
+		R1Y5 [label="5 Miami FL" color=red group=R1Y rank=1]
+		R1Y5 -> R2Y4 [constraint=true samehead=true]
+		"Miami FLR1Y5" [label="5 Miami FL" color=green group=R1Y rank=0]
+		"Miami FLR1Y5" -> R1Y5
+		DrakeR1Y5 [label="12 Drake" color=red group=R1Y rank=0]
+		DrakeR1Y5 -> R1Y5
+	}
+	subgraph Cluster_R2Y {
+		graph [label=R2Y]
+		R2Y4 [label="13 Kent" color=green group=R2Y rank=2]
+		R2Y4 -> R3Y1 [constraint=true samehead=true]
+	}
+	subgraph Cluster_R3Y {
+		graph [label=R3Y]
+		R3Y1 [label="13 Kent" color=red group=R3Y rank=3]
+		R3Y1 -> R4Y1 [constraint=true samehead=true]
+	}
+	subgraph Cluster_R1Y {
+		graph [label=R1Y]
+		R1Y2 [label="15 Colgate" color=green group=R1Y rank=1]
+		R1Y2 -> R2Y2 [constraint=true samehead=true]
+		TexasR1Y2 [label="2 Texas" color=red group=R1Y rank=0]
+		TexasR1Y2 -> R1Y2
+		ColgateR1Y2 [label="15 Colgate" color=green group=R1Y rank=0]
+		ColgateR1Y2 -> R1Y2
+	}
+	subgraph Cluster_R1Y {
+		graph [label=R1Y]
+		R1Y7 [label="7 Texas A&M" color=red group=R1Y rank=1]
+		R1Y7 -> R2Y2 [constraint=true samehead=true]
+		"Penn StR1Y7" [label="10 Penn St" color=red group=R1Y rank=0]
+		"Penn StR1Y7" -> R1Y7
+		"Texas A&MR1Y7" [label="7 Texas A&M" color=green group=R1Y rank=0]
+		"Texas A&MR1Y7" -> R1Y7
+	}
+	subgraph Cluster_R2Y {
+		graph [label=R2Y]
+		R2Y2 [label="15 Colgate" color=red group=R2Y rank=2]
+		R2Y2 -> R3Y2 [constraint=true samehead=true]
+	}
+	subgraph Cluster_R1Y {
+		graph [label=R1Y]
+		R1Y3 [label="3 Xavier" color=green group=R1Y rank=1]
+		R1Y3 -> R2Y3 [constraint=true samehead=true]
+		XavierR1Y3 [label="3 Xavier" color=green group=R1Y rank=0]
+		XavierR1Y3 -> R1Y3
+		KennesawR1Y3 [label="14 Kennesaw" color=red group=R1Y rank=0]
+		KennesawR1Y3 -> R1Y3
+	}
+	subgraph Cluster_R1Y {
+		graph [label=R1Y]
+		R1Y6 [label="11 Pittsburgh" color=red group=R1Y rank=1]
+		R1Y6 -> R2Y3 [constraint=true samehead=true]
+		"Iowa StR1Y6" [label="6 Iowa St" color=red group=R1Y rank=0]
+		"Iowa StR1Y6" -> R1Y6
+		PittsburghR1Y6 [label="11 Pittsburgh" color=green group=R1Y rank=0]
+		PittsburghR1Y6 -> R1Y6
+	}
+	subgraph Cluster_R2Y {
+		graph [label=R2Y]
+		R2Y3 [label="3 Xavier" color=green group=R2Y rank=2]
+		R2Y3 -> R3Y2 [constraint=true samehead=true]
+	}
+	subgraph Cluster_R3Y {
+		graph [label=R3Y]
+		R3Y2 [label="3 Xavier" color=green group=R3Y rank=3]
+		R3Y2 -> R4Y1 [constraint=true samehead=true]
+	}
+	subgraph Cluster_R4Y {
+		graph [label=R4Y]
+		R4Y1 [label="3 Xavier" color=red group=R4Y rank=4]
+		R4Y1 -> R5YZ [constraint=true samehead=true]
+	}
+	subgraph Cluster_R1Z {
+		graph [label=R1Z]
+		R1Z1 [label="1 Kansas" color=red group=R1Z rank=1]
+		R1Z1 -> R2Z1 [constraint=true samehead=true]
+		KansasR1Z1 [label="1 Kansas" color=green group=R1Z rank=0]
+		KansasR1Z1 -> R1Z1
+		HowardR1Z1 [label="16 Howard" color=red group=R1Z rank=0]
+		HowardR1Z1 -> R1Z1
+	}
+	subgraph Cluster_R1Z {
+		graph [label=R1Z]
+		R1Z8 [label="9 Illinois" color=green group=R1Z rank=1]
+		R1Z8 -> R2Z1 [constraint=true samehead=true]
+		ArkansasR1Z8 [label="8 Arkansas" color=red group=R1Z rank=0]
+		ArkansasR1Z8 -> R1Z8
+		IllinoisR1Z8 [label="9 Illinois" color=green group=R1Z rank=0]
+		IllinoisR1Z8 -> R1Z8
+	}
+	subgraph Cluster_R2Z {
+		graph [label=R2Z]
+		R2Z1 [label="9 Illinois" color=green group=R2Z rank=2]
+		R2Z1 -> R3Z1 [constraint=true samehead=true]
+	}
+	subgraph Cluster_R1Z {
+		graph [label=R1Z]
+		R1Z4 [label="13 Iona" color=red group=R1Z rank=1]
+		R1Z4 -> R2Z4 [constraint=true samehead=true]
+		ConnecticutR1Z4 [label="4 Connecticut" color=red group=R1Z rank=0]
+		ConnecticutR1Z4 -> R1Z4
+		IonaR1Z4 [label="13 Iona" color=green group=R1Z rank=0]
+		IonaR1Z4 -> R1Z4
+	}
+	subgraph Cluster_R1Z {
+		graph [label=R1Z]
+		R1Z5 [label="5 St Mary's CA" color=green group=R1Z rank=1]
+		R1Z5 -> R2Z4 [constraint=true samehead=true]
+		"St Mary's CAR1Z5" [label="5 St Mary's CA" color=green group=R1Z rank=0]
+		"St Mary's CAR1Z5" -> R1Z5
+		VCUR1Z5 [label="12 VCU" color=red group=R1Z rank=0]
+		VCUR1Z5 -> R1Z5
+	}
+	subgraph Cluster_R2Z {
+		graph [label=R2Z]
+		R2Z4 [label="5 St Mary's CA" color=red group=R2Z rank=2]
+		R2Z4 -> R3Z1 [constraint=true samehead=true]
+	}
+	subgraph Cluster_R3Z {
+		graph [label=R3Z]
+		R3Z1 [label="9 Illinois" color=green group=R3Z rank=3]
+		R3Z1 -> R4Z1 [constraint=true samehead=true]
+	}
+	subgraph Cluster_R1Z {
+		graph [label=R1Z]
+		R1Z2 [label="2 UCLA" color=green group=R1Z rank=1]
+		R1Z2 -> R2Z2 [constraint=true samehead=true]
+		UCLAR1Z2 [label="2 UCLA" color=green group=R1Z rank=0]
+		UCLAR1Z2 -> R1Z2
+		"UNC AshevilleR1Z2" [label="15 UNC Asheville" color=red group=R1Z rank=0]
+		"UNC AshevilleR1Z2" -> R1Z2
+	}
+	subgraph Cluster_R1Z {
+		graph [label=R1Z]
+		R1Z7 [label="10 Boise St" color=red group=R1Z rank=1]
+		R1Z7 -> R2Z2 [constraint=true samehead=true]
+		NorthwesternR1Z7 [label="7 Northwestern" color=red group=R1Z rank=0]
+		NorthwesternR1Z7 -> R1Z7
+		"Boise StR1Z7" [label="10 Boise St" color=green group=R1Z rank=0]
+		"Boise StR1Z7" -> R1Z7
+	}
+	subgraph Cluster_R2Z {
+		graph [label=R2Z]
+		R2Z2 [label="2 UCLA" color=green group=R2Z rank=2]
+		R2Z2 -> R3Z2 [constraint=true samehead=true]
+	}
+	subgraph Cluster_R1Z {
+		graph [label=R1Z]
+		R1Z3 [label="3 Gonzaga" color=green group=R1Z rank=1]
+		R1Z3 -> R2Z3 [constraint=true samehead=true]
+		GonzagaR1Z3 [label="3 Gonzaga" color=green group=R1Z rank=0]
+		GonzagaR1Z3 -> R1Z3
+		"Grand CanyonR1Z3" [label="14 Grand Canyon" color=red group=R1Z rank=0]
+		"Grand CanyonR1Z3" -> R1Z3
+	}
+	subgraph Cluster_R1Z {
+		graph [label=R1Z]
+		R1Z6 [label="6 TCU" color=red group=R1Z rank=1]
+		R1Z6 -> R2Z3 [constraint=true samehead=true]
+		TCUR1Z6 [label="6 TCU" color=green group=R1Z rank=0]
+		TCUR1Z6 -> R1Z6
+		"Arizona StR1Z6" [label="11 Arizona St" color=red group=R1Z rank=0]
+		"Arizona StR1Z6" -> R1Z6
+	}
+	subgraph Cluster_R2Z {
+		graph [label=R2Z]
+		R2Z3 [label="3 Gonzaga" color=red group=R2Z rank=2]
+		R2Z3 -> R3Z2 [constraint=true samehead=true]
+	}
+	subgraph Cluster_R3Z {
+		graph [label=R3Z]
+		R3Z2 [label="2 UCLA" color=red group=R3Z rank=3]
+		R3Z2 -> R4Z1 [constraint=true samehead=true]
+	}
+	subgraph Cluster_R4Z {
+		graph [label=R4Z]
+		R4Z1 [label="9 Illinois" color=green group=R4Z rank=4]
+		R4Z1 -> R5YZ [constraint=true samehead=true]
+	}
+	subgraph Cluster_R5Y {
+		graph [label=R5Y]
+		R5YZ [label="9 Illinois" color=green group=R5Y rank=5]
+		R5YZ -> R6CH [constraint=true samehead=true]
+	}
+	subgraph Cluster_R6C {
+		graph [label=R6C]
+		R6CH [label="9 Illinois" color=green group=R6C rank=6]
+		R6CH -> CHAMP [constraint=true samehead=true]
+	}
+}
