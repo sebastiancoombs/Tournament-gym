@@ -4,7 +4,7 @@ import matplotlib.pyplot as plt
 from tqdm.autonotebook import tqdm
 # from bracketology_rl import Bracket
 # from bracketgym import TournamentEnv
-
+import os
 import gymnasium as gym
 from pprint import pprint
 import warnings
@@ -19,6 +19,8 @@ import traceback
 import copy
 copy.deepcopy
 import graphviz
+os.environ["PATH"] += os.pathsep + "C:/Program Files/Graphviz/bin"
+ 
 class Team():
 
     """
@@ -89,7 +91,8 @@ class TournmentNode():
         team.slot=self.slot
         team.n_wins+=1
         self.winner=team
-        self.next_node.add_team(team)
+        if self.next_node:
+            self.next_node.add_team(team)
 
     def add_result(self,team_ob,matchup=None):
         self._true_winner=team_ob
@@ -171,14 +174,18 @@ class TournmentNode():
         self.update_game()
         match_up=self.get_matchup()
         top_team=self.teams[match_up[0]]
-        bottom_team=self.teams[match_up[1]]
-
         info={'top_team_name':top_team.name,
-        'bottom_team_name':bottom_team.name,
         'top_team_slot':top_team.slot,
-        'bottom_team_slot':bottom_team.slot,
         'top_team_seed':top_team.seed,
-        'bottom_team_seed':bottom_team.seed,}
+        }
+              
+        if len(match_up)>1:
+            bottom_team=self.teams[match_up[1]]
+
+            info['top_team_name']
+            info['bottom_team_name']=bottom_team.name
+            info['bottom_team_slot']=bottom_team.slot
+            info['bottom_team_seed']=bottom_team.seed
 
         return info
 
@@ -201,21 +208,25 @@ class TournmentNode():
 
         winner_name=match_up[action]
         self.advance_team(winner_name)
-
-        if self.winner.name==self._true_winner.name:
-            score=self.round**2
-            if score==0:
-                score=.5
-        else:
-            score=0
+        if self._true_winner:
+            if self.winner.name==self._true_winner.name:
+                score=self.round**2
+                if score==0:
+                    score=.5
+            else:
+                score=0.01
+        else: score=self.round**2
         return float(score)
     
     def get_winning_action(self):
         self.update_game()
         match_up=self.get_matchup()
-        if self._true_winner.name==match_up[0]:
-            action=0
-        else: action=1
+        if self._true_winner:
+            if self._true_winner.name==match_up[0]:
+                action=0
+            else: action=1
+        else:
+            action=-1
         return action
 
     def advance_winner(self):
@@ -441,12 +452,15 @@ class TournamentEnv(gym.Env):
         else:
             round, slot=self.steps.loc[self.current_step-1]
             Champ=self.bracket[round][slot]
-            game_info={
-                'True_Champ':Champ._true_winner.name,
-                'True_Champ_seed':Champ._true_winner.seed,
-                'Chosen_Champ':Champ.winner.name,
-                'Chosen_Champ_seed':Champ.winner.seed,
-                }
+            if Champ._true_winner:
+                game_info={
+                     'True_Champ':Champ._true_winner.name if Champ._true_winner else None,
+                    'True_Champ_seed':Champ._true_winner.seed  if Champ._true_winner else None,
+                    'Chosen_Champ':Champ.winner.name,
+                    'Chosen_Champ_seed':Champ.winner.seed,
+                    }
+            else:
+                game_info={}
         info={
                 'season':self.season,
                 'step':self.current_step,
@@ -487,7 +501,7 @@ class TournamentEnv(gym.Env):
         
     def check_done(self):
         term=False
-        if self.current_step>self.max_step:
+        if self.current_step>=self.max_step:
             term=True
         
         trunc=self.check_bracket_busted()
@@ -546,8 +560,23 @@ class TournamentEnv(gym.Env):
                             loser_ob=Team(name=loser_name,seed=self.team_map[loser_name])
                         else:
                             loser_ob=Team(name=loser_name,seed=12)
-
                         node.add_result(winner_ob,[winner_ob,loser_ob])
+                        
+                    else: 
+                            
+                            if r=='1':
+                                match=self.matchups[r][next_slot]
+
+                                
+                                for team in match:
+                                    seed=self.team_stats.set_index('TeamName').loc[team,'Seed']
+
+                                    team_ob=Team(name=team,seed=slot)
+                                    if team not in node.teams:
+                                        node.add_team(team_ob)
+                            
+
+
         self.max_step=step_id
 
         self.link_nodes()
@@ -571,11 +600,13 @@ class TournamentEnv(gym.Env):
                 
                 self.winner=winner_name
                 winner_ob=Team(name=winner_name,seed=self.team_map[winner_name])
+                winner_ob.slot='CHAMP'
+                
                 winner_node.add_result(winner_ob)
-            winner_ob.slot='CHAMP'
-            self.bracket[str(champ_round)]=winner_ob
-            self.max_step=max(self.game_step_map)
-            self.game_step_map[self.max_step+1]='Champ'
+
+        self.bracket[str(champ_round)]={'Champ':winner_node }   
+        self.game_step_map[self.max_step]=['7','Champ']
+        self.max_step=max(self.game_step_map)
 
     def link_nodes(self):
         for r_num, round  in self.bracket.items():
@@ -626,8 +657,8 @@ class TournamentEnv(gym.Env):
         if self.shuffle:
             self.steps=steps.loc[shuffler].reset_index(drop=True)
 
-    def render(self):
-        graph = graphviz.Digraph(f'March Madness Bracket {self.season}',
+    def render(self,bracket_num=1):
+        graph = graphviz.Digraph(f'March Madness Bracket {self.season}:{bracket_num}',
                                     engine='dot',
                                     node_attr={'shape': 'rounded',
                                             'color': 'lightblue2',
@@ -639,7 +670,7 @@ class TournamentEnv(gym.Env):
         # Set Graphviz attributes
         graph.attr(label=f'March Madness Bracket {self.season}')
         # graph.attr(layout="neato",)
-        graph.attr(rankdir='RL', nodesep='.2', ranksep='.3', splines='line',size='40,40')
+        graph.attr(rankdir='LR', nodesep='.2', ranksep='.3', splines='line',size='40,40')
         graph.graph_attr.update(landscape="false")   
         def bracket_waterfall(game,color):
             slot=game.slot
@@ -661,12 +692,15 @@ class TournamentEnv(gym.Env):
             with graph.subgraph(name=cust_name,) as c:
                     c.graph_attr.update(label= region )
                     # c.graph_attr.update(orientation= rotate_dict[region])
+
                     game_params={
                         'label':f'{game.winner.seed} {game.winner.name}',
                         'color':color,
                         'rank':f'{game.round}',
                             'group':region
                             }
+                    if game._true_winner:
+                        game_params['label']=f'{game.winner.seed} {game.winner.name}\n {game._true_winner.name} {game._true_winner.seed}'
                     c.node(slot, **game_params)
                     c.edge(slot,game.next_slot,constraint='true',samehead='true')
                     # print(game)
